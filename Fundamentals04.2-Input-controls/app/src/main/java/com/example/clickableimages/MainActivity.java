@@ -1,5 +1,6 @@
 package com.example.clickableimages;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -61,6 +63,25 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void openDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Alert");
+        dialogBuilder.setMessage("¿Desea aceptar?");
+        dialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                displayToast("Aceptar");
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                displayToast("Cancelar");
+            }
+        });
+
+        dialogBuilder.show();
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
@@ -69,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_action2:
                 displayToast("action 2");
+                return true;
+            case R.id.action_open_dialog:
+                openDialog();
                 return true;
             default:
                 return false;

@@ -29,6 +29,7 @@
     <string name="same_day_messenger_service">Same day messenger service</string>
     <string name="action_action1">action1</string>
     <string name="action_action2">action2</string>
+    <string name="action_open_dialog">open dialog</string>
 
     <string-array name="labels_array">
         <item>Home</item>
